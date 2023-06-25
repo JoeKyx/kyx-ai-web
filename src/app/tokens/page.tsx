@@ -21,13 +21,13 @@ const page: FC<pageProps> = ({ }) => {
           <TokenText />
           <Icons.Gem className='ml-2 h-6 md:h-8 w-6 md:w-8 text-light-gold' />
         </div>
-        <div className="text-lg text-slate-700 dark:text-slate-300">To top up your tokens check out our awesome offers! It's as easy as that. Just choose your preferred package, pay, and within 2 minutes you are back in action!</div>
+        <div className="text-lg text-slate-700 dark:text-slate-300">To top up your tokens check out our awesome offers! It is as easy as that. Just choose your preferred package, pay, and within 2 minutes you are back in action!</div>
       </div>
 
       {/* Right Section */}
       <div className="lg:w-4/6 w-full flex flex-col items-center lg:grid lg:grid-cols-3 lg:items-stretch gap-4">
-        {tokenOffers.map((offer, i) => (
-          <div className="w-full lg:w-auto">
+        {tokenOffers.map((offer: TokenOffer, i) => (
+          <div className="w-full lg:w-auto" key={offer.title}>
             <TokenSalesCard key={i} title={offer.title} price={offer.price} features={offer.features} />
           </div>
         ))}

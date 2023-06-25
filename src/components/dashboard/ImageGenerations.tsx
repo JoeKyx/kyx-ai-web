@@ -14,7 +14,7 @@ import PageLoader from "../ui/PageLoader";
 import Pagination from "../ui/Pagination";
 import SearchBar from "../ui/SearchBar";
 
-interface ImageGenerationsProps {}
+interface ImageGenerationsProps { }
 
 const ImageGenerations: FC<ImageGenerationsProps> = () => {
   const { data: session, status } = useSession();
@@ -61,7 +61,7 @@ const ImageGenerations: FC<ImageGenerationsProps> = () => {
     if (session) {
       fetchData();
     }
-  }, [session, status]);
+  }, [session, status, router]);
 
   const groupedImages: { [interactionId: string]: ImageData[] } =
     imageData.reduce((acc, image) => {

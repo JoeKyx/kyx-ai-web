@@ -12,10 +12,12 @@ const TokenText = forwardRef<HTMLSpanElement, TokenTextProps>(
     return status === "loading" ? (
       <></>
     ) : (
-      <span className={cn(className)} {...props}>
+      <span ref={ref} className={cn(className)} {...props}>
         {session?.user?.tokens} Tokens
       </span>
     );
   }
 );
+
+TokenText.displayName = "TokenText";
 export default TokenText

@@ -1,4 +1,5 @@
-export default [
+const tokenOffers = [
+
   {
     "title": "10.000 Tokens",
     "description": "10000 Tokens",
@@ -37,3 +38,5 @@ export interface TokenOffer {
   price: number;
   features: string[];
 }
+
+export default tokenOffers;
