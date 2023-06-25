@@ -23,6 +23,8 @@ const Navbar = async () => {
           </Link>
           {session?.user?.image ? (
             <Image
+              width={40}
+              height={40}
               src={session.user.image}
               alt="User Avatar"
               className="w-10 h-10 rounded-full inline-block ml-2"
