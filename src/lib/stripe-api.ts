@@ -13,9 +13,8 @@ export async function checkout({ lineItems }: { lineItems: RedirectToCheckoutCli
     }
     return stripePromise;
   };
-
+  
   const stripe = await getStripe();
-
   if (stripe == null) {
     throw new Error('Stripe not initialized.');
   }
@@ -26,4 +25,5 @@ export async function checkout({ lineItems }: { lineItems: RedirectToCheckoutCli
     successUrl: `${window.location.origin}/?session_id={CHECKOUT_SESSION_ID}`,
     cancelUrl: window.location.origin,
   });
+
 }

@@ -11,6 +11,10 @@ interface pageProps { }
 
 const page: FC<pageProps> = ({ }) => {
   const tokenOffers = TokenOffers;
+
+
+
+
   return (
     <div className='flex flex-col lg:flex-row justify-between min-h-screen items-center p-5 pt-28 lg:pt-5'>
       {/* Left Section */}
@@ -29,9 +33,7 @@ const page: FC<pageProps> = ({ }) => {
       <div className="lg:w-4/6 w-full flex flex-col items-center lg:grid lg:grid-cols-3 lg:items-stretch gap-4">
         {tokenOffers.map((offer: TokenOffer, i) => (
           <div className="w-full lg:w-auto" key={offer.title}>
-            <TokenSalesCard key={i} title={offer.title} price={offer.price} features={offer.features} onClick={(() => {
-              checkout({ lineItems: [{ price: offer.appId, quantity: 1 }] })
-            })} />
+            <TokenSalesCard key={i} title={offer.title} price={offer.price} features={offer.features} priceId={offer.appId} />
           </div>
         ))}
       </div>

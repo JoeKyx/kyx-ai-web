@@ -8,18 +8,27 @@ import {
   Button,
 } from "@material-tailwind/react";
 import { CheckIcon } from "@heroicons/react/24/outline";
+import { checkout } from "@/lib/stripe-api";
 
 interface TokenSalesCardProps {
   title: string;
   price: number;
+  priceId: string;
   features: string[];
   onClick?: () => void;
 
 }
 
 export default function TokenSalesCard(
-  { title, price, features, onClick }: TokenSalesCardProps
+  { title, price, features, priceId }: TokenSalesCardProps
 ) {
+
+  const onClick = async () => {
+    await checkout({ lineItems: [{ price: priceId, quantity: 1 }] });
+
+  };
+
+
   return (
     <div className="w-full flex justify-center">
       <Card className="w-full max-w-[20rem] p-8 bg-slate-700">
