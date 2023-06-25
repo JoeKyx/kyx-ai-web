@@ -63,4 +63,6 @@ const Pagination = forwardRef<HTMLDivElement, PaginationProps>(
   }
 );
 
+Pagination.displayName = "Pagination";
+
 export default Pagination;

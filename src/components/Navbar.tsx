@@ -8,8 +8,9 @@ import ThemeToggle from "./ThemeToggle";
 import LoginModal from "./LoginModal";
 import { Session } from "next-auth";
 import TokenDisplay from "./navbar/TokenDisplay";
+import Image from "next/image";
 
-interface NavbarProps {}
+interface NavbarProps { }
 
 const Navbar = async () => {
   const session = await getServerSession();
@@ -21,7 +22,7 @@ const Navbar = async () => {
             Kyx AI
           </Link>
           {session?.user?.image ? (
-            <img
+            <Image
               src={session.user.image}
               alt="User Avatar"
               className="w-10 h-10 rounded-full inline-block ml-2"

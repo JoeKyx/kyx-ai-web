@@ -26,7 +26,7 @@ const VoiceGenerationMessage: FC<VoiceGenerationMessageProps> = ({
         block: "center",
       });
     }
-  }, [showFullMessage[index]]); // Only re-run the effect if the state for this particular message changes
+  }, [index, showFullMessage]); // Only re-run the effect if the state for this particular message changes
 
   return (
     <div ref={messageRef}>
@@ -34,7 +34,7 @@ const VoiceGenerationMessage: FC<VoiceGenerationMessageProps> = ({
         <span>Message: </span>
         <div>
           {showFullMessage[index] ||
-          voiceGeneration.message.split(" ").length < 11
+            voiceGeneration.message.split(" ").length < 11
             ? voiceGeneration.message
             : `${voiceGeneration.message.split(" ").slice(0, 10).join(" ")}...`}
         </div>

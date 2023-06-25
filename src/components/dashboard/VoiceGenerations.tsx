@@ -88,7 +88,7 @@ const VoiceGenerations: FC<VoiceGenerationsProps> = () => {
     };
     console.log("Fetching...");
     fetchData();
-  }, [session]);
+  }, [currentPage, router, session, status]);
 
   useEffect(() => {
     //slice the generations into pages whenever currentPage or filteredGenerations changes

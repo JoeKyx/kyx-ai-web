@@ -4,7 +4,7 @@ import { FC, HTMLAttributes, forwardRef } from "react";
 
 interface CardProps
   extends HTMLAttributes<HTMLParagraphElement>,
-    VariantProps<typeof CardVariants> {}
+  VariantProps<typeof CardVariants> { }
 
 const CardVariants = cva(
   "dark:border-light-gold border-black border-2 rounded-xl p-6 overflow-hidden realtive transition-all duration-300  shadow-md bg-gradient-to-b from-white to-gray-100 dark:from-gray-800 dark:to-gray-900",
@@ -35,5 +35,7 @@ const Card = forwardRef<HTMLParagraphElement, CardProps>(
     );
   }
 );
+
+Card.displayName = "Card";
 
 export default Card;

@@ -16,7 +16,7 @@ const TokenDisplay = forwardRef<HTMLDivElement, TokenDisplayProps>(
     return status === "loading" ? (
       <></>
     ) : (
-      <div className={className} {...props}>
+      <div ref={ref} className={className} {...props}>
         <Link href={'/tokens'} className={buttonVariants({ variant: "ghost" })}>
           <Icons.Gem className="h-4 w-4 pr-1" />
           {session?.user?.tokens}
@@ -26,5 +26,8 @@ const TokenDisplay = forwardRef<HTMLDivElement, TokenDisplayProps>(
     );
   }
 );
+
+TokenDisplay.displayName = "TokenDisplay";
+
 
 export default TokenDisplay;
