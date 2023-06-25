@@ -5,6 +5,7 @@ import Icons from "@/components/Icons";
 import TokenSalesCard from '@/components/TokenSalesCard';
 import TokenOffers, { TokenOffer } from '../statics/TokenOffers';
 import { map } from 'lodash';
+import { checkout } from '@/lib/stripe-api';
 
 interface pageProps { }
 
@@ -28,7 +29,9 @@ const page: FC<pageProps> = ({ }) => {
       <div className="lg:w-4/6 w-full flex flex-col items-center lg:grid lg:grid-cols-3 lg:items-stretch gap-4">
         {tokenOffers.map((offer: TokenOffer, i) => (
           <div className="w-full lg:w-auto" key={offer.title}>
-            <TokenSalesCard key={i} title={offer.title} price={offer.price} features={offer.features} />
+            <TokenSalesCard key={i} title={offer.title} price={offer.price} features={offer.features} onClick={(() => {
+              checkout({ lineItems: [{ price: offer.appId, quantity: 1 }] })
+            })} />
           </div>
         ))}
       </div>

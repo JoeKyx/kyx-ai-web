@@ -8,7 +8,8 @@ const tokenOffers = [
       "100 Image Generations",
       "20 Minutes of Voice Generation",
       "10.000 Chat Messages"
-    ]
+    ],
+    "appId": "price_1NMtH3JB0jYECGoH5jJWpE27"
   },
   {
     "title": "25.000 Tokens",
@@ -18,7 +19,8 @@ const tokenOffers = [
       "100 Image Generations",
       "20 Minutes of Voice Generation",
       "10.000 Chat Messages"
-    ]
+    ],
+    "appId": "price_1NMtJKJB0jYECGoHmpzvcCLt"
   },
   {
     "title": "60.000 Tokens",
@@ -28,7 +30,8 @@ const tokenOffers = [
       "100 Image Generations",
       "20 Minutes of Voice Generation",
       "10.000 Chat Messages"
-    ]
+    ],
+    "appId": "price_1NMtLBJB0jYECGoH7tyUz7ih"
   }
 ]
 
@@ -36,6 +39,7 @@ export interface TokenOffer {
   title: string;
   description: string;
   price: number;
+  appId: string;
   features: string[];
 }
 
