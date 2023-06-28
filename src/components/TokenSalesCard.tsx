@@ -10,6 +10,8 @@ import {
 import { CheckIcon } from "@heroicons/react/24/outline";
 import { checkout } from "@/lib/stripe-api";
 
+import { useSession } from "next-auth/react";
+
 interface TokenSalesCardProps {
   title: string;
   price: number;
@@ -23,8 +25,11 @@ export default function TokenSalesCard(
   { title, price, features, priceId }: TokenSalesCardProps
 ) {
 
+  const { data: session } = useSession();
+
+
   const onClick = async () => {
-    await checkout({ lineItems: [{ price: priceId, quantity: 1 }] });
+    await checkout({ lineItems: [{ price: priceId, quantity: 1 }] }, session?.user.id as string);
 
   };
 
@@ -68,7 +73,7 @@ export default function TokenSalesCard(
           </ul>
         </CardBody>
         <CardFooter className="mt-12 p-0">
-          <Button
+          {session ? (<Button
             size="lg"
             color="white"
             className="text-blue-500 hover:scale-[1.02] focus:scale-[1.02] active:scale-100"
@@ -77,7 +82,17 @@ export default function TokenSalesCard(
             onClick={onClick}
           >
             Buy Now
-          </Button>
+          </Button>) : (<Button
+            size="lg"
+            color="white"
+            className="text-blue-500 hover:scale-[1.02] focus:scale-[1.02] active:scale-100"
+            ripple={false}
+            fullWidth={true}
+
+          >
+            Login to buy
+          </Button>)}
+
         </CardFooter>
       </Card>
     </div>

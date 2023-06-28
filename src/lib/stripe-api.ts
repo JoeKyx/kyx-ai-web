@@ -1,7 +1,7 @@
 import { Stripe, loadStripe } from '@stripe/stripe-js';
 import { RedirectToCheckoutClientOptions } from '@stripe/stripe-js';
 
-export async function checkout({ lineItems }: { lineItems: RedirectToCheckoutClientOptions["lineItems"] }) {
+export async function checkout({ lineItems }: { lineItems: RedirectToCheckoutClientOptions["lineItems"] }, userId: string) {
   let stripePromise: Stripe | null = null;
 
   const getStripe = async () => {
@@ -13,7 +13,7 @@ export async function checkout({ lineItems }: { lineItems: RedirectToCheckoutCli
     }
     return stripePromise;
   };
-  
+
   const stripe = await getStripe();
   if (stripe == null) {
     throw new Error('Stripe not initialized.');
@@ -21,9 +21,10 @@ export async function checkout({ lineItems }: { lineItems: RedirectToCheckoutCli
 
   await stripe.redirectToCheckout({
     mode: 'payment',
-    lineItems,
-    successUrl: `${window.location.origin}/?session_id={CHECKOUT_SESSION_ID}`,
+    lineItems: lineItems,
+    successUrl: `${window.location.origin}/checkout/{CHECKOUT_SESSION_ID}`,
     cancelUrl: window.location.origin,
+    clientReferenceId: userId,
   });
 
 }

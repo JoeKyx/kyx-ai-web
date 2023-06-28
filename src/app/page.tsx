@@ -4,56 +4,92 @@ import Paragraph from "@/components/ui/Paragraph";
 import Link from "next/link";
 import Image from "next/image";
 import Chat from "@/components/Chat";
+import { ScrollDownButton } from "@/components/ui/ScrollDownButton";
+import Button, { buttonVariants } from "@/components/ui/Button";
+import ScrollButton from "@/components/ui/ScrollButton";
 export const metadata: Metadata = {
   title: "Kyx AI | Home",
   description: "Your personal Discord AI assistant",
 };
 
+
 export default function Home() {
   return (
-    <div className="relative h-screen flex items-center justify-center overflow-x-hidden">
-      <div className="container pt-32 max-w-7xl mx-auto w-full h-full">
-        <div className="h-full gap-6 flex flex-col justify-start lg:justify-center items-center lg:items-start">
-          <div className="flex items-center">
-            <div className="relative inline-block items-center h-20 w-20 rounded-full overflow-hidden me-8 border-2 dark:border-light-gold border-black hover:animate-bounce">
-              <Image
-                priority
-                className="image-shadow"
-                quality={100}
-                fill
-                style={{ objectFit: "cover" }}
-                src="/kyxAi.jpeg"
-                alt="Kyx AI Logo"
-              />
+    <div className="snap-y snap-always h-screen overflow-auto">
+      <div className="snap-center relative h-screen flex items-center justify-center overflow-x-hidden" id="section-1">
+        <div className="container pt-32 max-w-7xl mx-auto w-full h-full">
+          <div className="h-full gap-6 flex flex-col justify-start lg:justify-center items-center lg:items-start">
+            <div className="flex items-center">
+              <div className="relative inline-block items-center h-20 w-20 rounded-full overflow-hidden me-8 border-2 dark:border-light-gold border-black hover:animate-bounce">
+                <Image
+                  priority
+                  className="image-shadow"
+                  quality={100}
+                  fill
+                  style={{ objectFit: "cover" }}
+                  src="/kyxAi.jpeg"
+                  alt="Kyx AI Logo"
+                />
+              </div>
+              <LargeHeading
+                size="lg"
+                className="three-d text-black dark:text-light-gold"
+              >
+                <span>Kyx AI</span>
+                <br />
+                Your all in one Discord AI assistant
+              </LargeHeading>
             </div>
-            <LargeHeading
-              size="lg"
-              className="three-d text-black dark:text-light-gold"
-            >
-              <span>Kyx AI</span>
-              <br />
-              Your all in one Discord AI assistant
-            </LargeHeading>
+            <Paragraph className="max-w-xl lg:text-left">
+              <Link
+                href="/login"
+                className="underline underline-offset-2 text-black dark:text-light-gold"
+              >
+                Login
+              </Link>{" "}
+              with your Discord Account to view and download all of your Kyx AI creations!
+              You don&apos;t know what Kyx AI is?{" "}
+              <ScrollButton targetId="section-2" className="underline underline-offset-2 text-black dark:text-light-gold">Scroll down</ScrollButton>
+              {" "}to find out!
+
+            </Paragraph>
           </div>
-          <Paragraph className="max-w-xl lg:text-left">
-            <Link
-              href="/login"
-              className="underline underline-offset-2 text-black dark:text-light-gold"
-            >
-              Login
-            </Link>{" "}
-            to manage all your Kyx AI creations and to subscribe to our awesome{" "}
-            <Link
-              href="/premium"
-              className="underline underline-offset-2 text-black dark:text-light-gold"
-            >
-              premium
-            </Link>{" "}
-            features.
-          </Paragraph>
         </div>
+        <Chat />
       </div>
-      {/*  <Chat /> */}
-    </div>
+      <div className="snap-start snap-mandatory relative h-screen flex flex-col items-center justify-center overflow-x-hidden pt-20" id="section-2">
+        <div className="flex flex-col md:flex-row justify-center space-y-6 md:space-y-0 md:space-x-6 px-4 lg:px-0 w-full max-w-6xl">
+          <div className="md:w-1/2 relative ">
+            <div className="relative h-0 overflow-hidden max-w-full justify-center items-center" style={{ paddingBottom: "56.25%" }}>
+              <iframe className="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+
+            </div>
+            <div className="mt-8 text-center">
+              <Link href="https://discord.com/api/oauth2/authorize?client_id=1109484717981573131&permissions=397287746624&scope=bot" className={buttonVariants({ variant: "premium" })} target="_blank">
+                Add Kyx AI to my server!
+              </Link>
+            </div>
+          </div>
+          <div className="md:w-1/2 text-center md:text-left">
+            <h2 className="text-3xl font-bold mb-4 dark:text-light-gold three-d">Explore what you can do with Kyx AI</h2>
+            <Paragraph className='text-left'>Unlock the power of AI for your Discord server with Kyx AI, the free and versatile Discord bot. Discover the capabilities of AI with the following features:</Paragraph>
+            <ul className="list-disc ml-5 space-y-2 text-lg font-medium leading-7 dark:text-slate-100">
+              <li className="pl-2"><b>Generate stunning images</b> from text prompts! Kyx AI allows you to control the image creation process with easily adjustable settings.</li>
+              <li className="pl-2">Bring life to your voice channel! Kyx AI can join your voice channel and mimic the <b>voice of a any person</b>. Plus, you can save and download the spoken audio.</li>
+              <li className="pl-2">Get ready for an interactive experience! Engage with Kyx AI, get your questions answered, and enjoy the fluent conversation just <b>like chatting with a real human.</b></li>
+              <li className="pl-2"><b>Completely FREE!</b> As we&aposre just launching, every user gets 10,000 tokens for free usage. Additional tokens can be purchased at affordable rates.</li>
+              <li className="pl-2">Stay tuned for more! We are constantly innovating and bringing new features to enhance your Kyx AI experience.</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+
+
+      {/* 
+      <div className="snap-center snap-mandatory relative h-screen flex items-center justify-center overflow-x-hidden" id="section-3">
+        Third part
+      </div> */}
+    </div >
   );
 }

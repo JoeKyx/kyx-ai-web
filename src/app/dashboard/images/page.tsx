@@ -1,4 +1,3 @@
-"use client";
 import ImageGenerations from "@/components/dashboard/ImageGenerations";
 import { set } from "lodash";
 import { fetchData } from "next-auth/client/_utils";
@@ -8,8 +7,9 @@ import { FC, useEffect, useState } from "react";
 import { imageDataArray } from "@/lib/validators/imageData";
 import { Loader2 } from "lucide-react";
 import PageLoader from "@/components/ui/PageLoader";
+import { Metadata } from "next";
 
-interface pageProps {}
+interface pageProps { }
 
 export interface ImageData {
   guildId: string;
@@ -24,8 +24,12 @@ export interface ImageData {
   upscaledVariationId?: string;
   upscaled?: boolean;
 }
+export const metadata: Metadata = {
+  title: "Kyx AI | Images",
+  description: "Information about your image generations",
+};
 
-const page: FC<pageProps> = ({}) => {
+const page: FC<pageProps> = ({ }) => {
   return (
     <div>
       <ImageGenerations />

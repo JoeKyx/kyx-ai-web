@@ -1,10 +1,10 @@
 import { FC } from "react";
 
-interface ChatHeaderProps {}
+interface ChatHeaderProps { }
 
-const ChatHeader: FC<ChatHeaderProps> = ({}) => {
+const ChatHeader: FC<ChatHeaderProps> = ({ }) => {
   return (
-    <div className="w-full flex gap-3 justfiy-start items-center text-zinc-800">
+    <div className="w-full flex gap-3 justfiy-start items-center text-zinc-800 dark:text-gray-200">
       <div className="flex flex-col items-start text-sm">
         <p className="text-xs">Chat with</p>
         <div className="flex items-center gap-2">

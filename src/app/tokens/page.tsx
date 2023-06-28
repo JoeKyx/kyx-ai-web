@@ -6,8 +6,15 @@ import TokenSalesCard from '@/components/TokenSalesCard';
 import TokenOffers, { TokenOffer } from '../statics/TokenOffers';
 import { map } from 'lodash';
 import { checkout } from '@/lib/stripe-api';
+import { Metadata } from 'next';
 
 interface pageProps { }
+
+export const metadata: Metadata = {
+  title: "Kyx AI | Tokens",
+  description: "Token Management",
+};
+
 
 const page: FC<pageProps> = ({ }) => {
   const tokenOffers = TokenOffers;
