@@ -15,9 +15,7 @@ const Providers: FC<ProvidersProps> = ({ children }) => {
     <SessionProvider>
       <QueryClientProvider client={queryClient}>
         <MessagesProvider>
-          <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-            {children}
-          </ThemeProvider>
+          <ThemeProvider attribute="class" defaultTheme="system" enableSystem>{children}</ThemeProvider>
         </MessagesProvider>
       </QueryClientProvider>
     </SessionProvider>

@@ -14,6 +14,12 @@ interface HomeAnimationProps {
 }
 
 const HomeAnimation: FC<HomeAnimationProps> = ({ }) => {
+  const [hydrated, setHydrated] = useState(false);
+  useEffect(() => {
+    setHydrated(true);
+  }, []);
+
+
   const variants = [{
     prompt: '/generate_image dennis rodman, manga hero',
     responseImages: ["https://cdn.leonardo.ai/users/419f24e8-a4fe-4906-8b3c-6bdd40eaac2e/generations/d606a440-ed9a-401d-843e-95d4dc6f7617/Leonardo_Creative_dennis_rodman_manga_hero_black_and_white_jap_3.jpg",
@@ -60,11 +66,7 @@ const HomeAnimation: FC<HomeAnimationProps> = ({ }) => {
     </div>
   </div>)
 
-  const Avatar = (src: string, alt: string) => (<div className='relative inline-block items-center h-12 w-12 sm:h-16 sm:w-16 rounded-full overflow-hidden me-8 border-2 dark:border-light-gold border-black hover:animate-bounce'>
-    <Image quality={100}
-      fill
-      style={{ objectFit: "cover" }} alt={alt} src={src} />
-  </div>)
+
 
   const AvatarElement: FC<{ src: string, alt: string }> = ({ src, alt }) => {
     return (
@@ -100,7 +102,10 @@ const HomeAnimation: FC<HomeAnimationProps> = ({ }) => {
   const addToServer = async () => {
     window.open("https://discord.com/api/oauth2/authorize?client_id=1109484717981573131&permissions=397287746624&scope=bot", "_blank");
   }
-
+  if (!hydrated) {
+    // Returns null on first render, so the client and server match
+    return null;
+  }
   return (
     <div>
       <div className="flex  space-y-4 sm:space-x-4 sm:space-y-0">

@@ -40,7 +40,6 @@ export default function Home() {
           <div className="flex flex-col w-full  p-6 rounded-lg shadow-md bg-white dark:bg-gray-800 mt-4">
             <HomeAnimation />
           </div>
-
         </div>
         <Chat />
       </div>

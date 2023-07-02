@@ -1,6 +1,6 @@
 "use client";
 import { useSession } from "next-auth/react";
-import { FC, HTMLAttributes, forwardRef } from "react";
+import { FC, HTMLAttributes, forwardRef, useState, useEffect } from "react";
 import Icons from "@/components/Icons";
 import { Gem } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -12,7 +12,18 @@ interface TokenDisplayProps extends HTMLAttributes<HTMLDivElement> { }
 
 const TokenDisplay = forwardRef<HTMLDivElement, TokenDisplayProps>(
   ({ className, ...props }, ref) => {
+    const [isHydrated, setIsHydrated] = useState(false);
     const { data: session, status } = useSession();
+
+    useEffect(() => {
+      setIsHydrated(true);
+    }, []);
+
+    if (!isHydrated) {
+      return null;
+    }
+
+
     return (
 
       <div ref={ref} className={className} {...props}>

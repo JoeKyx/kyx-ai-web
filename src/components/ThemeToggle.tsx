@@ -1,6 +1,6 @@
 "use client";
 import { useTheme } from "next-themes";
-import { FC } from "react";
+import { FC, useEffect, useState } from "react";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -10,10 +10,20 @@ import {
 import Button from "./ui/Button";
 import Icons from "./Icons";
 
-interface ThemeToggleProps {}
+interface ThemeToggleProps { }
 
-const ThemeToggle: FC<ThemeToggleProps> = ({}) => {
+const ThemeToggle: FC<ThemeToggleProps> = ({ }) => {
+  const [isHydrated, setIsHydrated] = useState<boolean>(false);
   const { setTheme } = useTheme();
+
+  useEffect(() => {
+    setIsHydrated(true);
+  }, []);
+
+  if (!isHydrated) {
+    return null;
+  }
+
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>

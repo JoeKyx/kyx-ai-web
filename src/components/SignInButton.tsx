@@ -1,5 +1,5 @@
 "use client";
-import { FC, useState } from "react";
+import { FC, useState, useEffect } from "react";
 import Button from "@/components/ui/Button";
 
 import { signIn } from "next-auth/react";
@@ -14,7 +14,17 @@ interface SignInButtonProps extends VariantProps<typeof buttonVariants> {
 }
 
 const SignInButton: FC<SignInButtonProps> = ({ className, variant, size }) => {
+  const [isHydrated, setIsHydrated] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState<boolean>(false);
+
+  useEffect(() => {
+    setIsHydrated(true);
+  }
+    , []);
+
+  if (!isHydrated) {
+    return null;
+  }
 
   const signInWithDiscord = async () => {
     setIsLoading(true);

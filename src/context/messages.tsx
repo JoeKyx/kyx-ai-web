@@ -20,15 +20,23 @@ export const MessagesContext = createContext<{
 }>({
   messages: [],
   isMessageUpdating: false,
-  addMessages: () => {},
-  removeMessage: () => {},
-  updateMessage: () => {},
-  setIsMessageUpdating: () => {},
+  addMessages: () => { },
+  removeMessage: () => { },
+  updateMessage: () => { },
+  setIsMessageUpdating: () => { },
 });
 
 export function MessagesProvider({ children }: { children: React.ReactNode }) {
-  const [messages, setMessages] = useState<Message[]>(defaultValue);
+  const [isHydrated, setIsHydrated] = useState<boolean>(false);
+  const [messages, setMessages] = useState<Message[]>([]);
   const [isMessageUpdating, setIsMessageUpdating] = useState<boolean>(false);
+
+  useEffect(() => {
+    if (!isHydrated) {
+      setMessages(defaultValue);
+      setIsHydrated(true);
+    }
+  }, [isHydrated]);
 
   const addMessages = (message: Message) => {
     setMessages((prevMessages) => [...prevMessages, message]);
@@ -56,6 +64,10 @@ export function MessagesProvider({ children }: { children: React.ReactNode }) {
       })
     );
   };
+
+  if (!isHydrated) {
+    return null;
+  }
 
   return (
     <MessagesContext.Provider

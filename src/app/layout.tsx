@@ -22,7 +22,6 @@ export default function RootLayout({
         <Providers>
           <Navbar />
           <Toaster position="bottom-left" />
-
           <main>{children}</main>
         </Providers>
         {/* Allow for more height on mobile devices */}
