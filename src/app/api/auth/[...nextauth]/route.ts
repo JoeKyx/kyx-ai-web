@@ -42,7 +42,6 @@ export const options = {
     }) {
       session.user.id = token.id;
       const userTokens = await getUserTokens(token.id);
-      console.log(userTokens);
       session.user.tokens = userTokens;
       return session;
     },

@@ -26,10 +26,10 @@ const DashboardCart: FC<DashboardCartProps> = ({
   return (
     <Card className="mt-6 w-96">
       <CardHeader color="blue-gray" className="relative h-56">
-        <Image src={imageSrc} alt="img-blur-shadow" fill />
+        <Image src={imageSrc} alt="img-blur-shadow" fill sizes="w-96" />
       </CardHeader>
       <CardBody>
-        <Typography variant="h5" color="blue-gray" className="mb-2">
+        <Typography variant="h5" color="blue-gray" className="mb-2" sizes="w-96">
           {title}
         </Typography>
         <Typography>{text}</Typography>

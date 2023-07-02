@@ -125,63 +125,79 @@ const ImageGenerations: FC<ImageGenerationsProps> = () => {
           <PageLoader />
         </div>
       ) : (
-        <div className="flex-col items-center gap-4 justify-center">
-          <div className="flex items-center gap-4 justify-center">
-            <SearchBar
-              containerClassName="relative flex items-center gap-2 pb-10"
-              type="text"
-              placeholder="Search"
-              onChange={handleSearch}
-              value={searchTerm}
-            />
+
+        imageData.length == 0 ? (
+          <div className="flex justify-center items-center">
+            <Paragraph>You haven&apos;t generated any images yet.</Paragraph>
           </div>
-          <Pagination
-            currentPage={currentPage}
-            totalPages={totalPages}
-            prev={prev}
-            next={next}
-            handlePageClick={handlePageClick}
-          />
-          {filteredImages.map(([messageId, imageList]) => (
-            <div key={messageId} className="flex justify-center">
-              <div className="flex flex-col items-start gap-2">
-                <LargeHeading size="xs">{imageList[0].prompt}</LargeHeading>
-                <div className="flex flex-wrap gap-2 justify-center sm:justify-start">
-                  {imageList.map((image) => (
-                    <div
-                      className="flex flex-col gap-2 sm:py-2 py-0"
-                      key={image.url}
-                    >
-                      <Image
-                        src={image.url}
-                        width={256}
-                        height={256}
-                        alt="an AI generated image"
-                        className="hover:opacity-80 transition-opacity duration-200 hover:cursor-pointer rounded-md shadow-sm sm:w-64 w-48"
-                        onClick={() => {
-                          window.open(image.url, "_blank");
-                        }}
-                      />
-                      {image.upscaledUrl && (
-                        <Button onClick={() => window.open(image.upscaledUrl)}>
-                          Upscaled Version
-                        </Button>
-                      )}
-                    </div>
-                  ))}
+        ) : (
+
+          <div className="flex-col items-center gap-4 justify-center">
+
+            <div className="flex items-center gap-4 justify-center">
+              <SearchBar
+                containerClassName="relative flex items-center gap-2 pb-10"
+                type="text"
+                placeholder="Search"
+                onChange={handleSearch}
+                value={searchTerm}
+              />
+            </div>
+            {totalPages > 1 ? (
+              <Pagination
+                currentPage={currentPage}
+                totalPages={totalPages}
+                prev={prev}
+                next={next}
+                handlePageClick={handlePageClick}
+              />
+            ) : null}
+            {filteredImages.map(([messageId, imageList]) => (
+              <div key={messageId} className="flex justify-center">
+                <div className="flex flex-col items-start gap-2">
+                  <LargeHeading size="xs">{imageList[0].prompt}</LargeHeading>
+                  <div className="flex flex-wrap gap-2 justify-center sm:justify-start">
+                    {imageList.map((image) => (
+                      <div
+                        className="flex flex-col gap-2 sm:py-2 py-0"
+                        key={image.url}
+                      >
+                        <Image
+                          src={image.url}
+                          width={256}
+                          height={256}
+                          alt="an AI generated image"
+                          className="hover:opacity-80 transition-opacity duration-200 hover:cursor-pointer rounded-md shadow-sm sm:w-64 w-48"
+                          onClick={() => {
+                            window.open(image.url, "_blank");
+                          }}
+                        />
+                        {image.upscaledUrl && (
+                          <Button onClick={() => window.open(image.upscaledUrl)}>
+                            Upscaled Version
+                          </Button>
+                        )}
+                      </div>
+                    ))}
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
-          <Pagination
-            currentPage={currentPage}
-            totalPages={totalPages}
-            prev={prev}
-            next={next}
-            handlePageClick={handlePageClick}
-          />
-        </div>
+            ))}
+            {totalPages > 1 ? (
+              <Pagination
+                currentPage={currentPage}
+                totalPages={totalPages}
+                prev={prev}
+                next={next}
+                handlePageClick={handlePageClick}
+              />
+            ) : null}
+          </div>
+        )
+
+
       )}
+
     </>
   );
 };

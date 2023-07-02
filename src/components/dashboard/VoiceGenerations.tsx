@@ -155,27 +155,36 @@ const VoiceGenerations: FC<VoiceGenerationsProps> = () => {
         </div>
       ) : (
         <div className="flex-col items-center gap-4 justify-center">
-          <div className="flex-col items-center justify-center pb-4">
-            <div className="flex items-center gap-4 justify-center">
-              <SearchBar
-                containerClassName="relative flex items-center gap-2 pb-10"
-                type="text"
-                placeholder="Search"
-                value={searchQuery}
-                onChange={handleSearch}
-              />
-            </div>
-            {filteredGenerations.length > generationsPerPage && (
-              <Pagination
-                totalPages={totalPages}
-                currentPage={currentPage}
-                prev={prev}
-                next={next}
-                handlePageClick={changePage}
-              />
-            )}
-          </div>
+          {voiceGenerations.length === 0 ? (
+            <Paragraph className="text-center">
+              You haven&apos;t generated any voices yet.
+            </Paragraph>
+          ) : (
+            <div className="flex-col items-center justify-center pb-4">
 
+
+              <div className="flex items-center gap-4 justify-center">
+                <SearchBar
+                  containerClassName="relative flex items-center gap-2 pb-10"
+                  type="text"
+                  placeholder="Search"
+                  value={searchQuery}
+                  onChange={handleSearch}
+                />
+              </div>
+
+              {filteredGenerations.length > generationsPerPage && (
+                <Pagination
+                  totalPages={totalPages}
+                  currentPage={currentPage}
+                  prev={prev}
+                  next={next}
+                  handlePageClick={changePage}
+                />
+              )}
+            </div>
+
+          )}
           {currentGenerations.length > 0 ? (
             currentGenerations.map((voiceGeneration, index) => (
               <div
@@ -216,6 +225,7 @@ const VoiceGenerations: FC<VoiceGenerationsProps> = () => {
       )}
     </>
   );
+
 };
 
 export default VoiceGenerations;

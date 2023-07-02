@@ -5,39 +5,21 @@ import Button from "@/components/ui/Button";
 import { signIn } from "next-auth/react";
 import { toast } from "./ui/toast";
 import LoginModal from "@/components/LoginModal";
+import { buttonVariants } from "@/components/ui/Button";
+import { size } from "lodash";
+import { VariantProps } from "class-variance-authority";
 
-interface SignInButtonProps {}
+interface SignInButtonProps extends VariantProps<typeof buttonVariants> {
+  className?: string;
+}
 
-const SignInButton: FC<SignInButtonProps> = ({}) => {
+const SignInButton: FC<SignInButtonProps> = ({ className, variant, size }) => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
-
-  const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
-
-  const openLoginModal = () => {
-    setIsLoginModalOpen(true);
-  };
-
-  const closeLoginModal = () => {
-    setIsLoginModalOpen(false);
-  };
-
-  const signInWithGoogle = async () => {
-    setIsLoading(true);
-    try {
-      // await signIn("google", { callbackUrl: "http://localhost:3000/" });
-    } catch (error) {
-      toast({
-        title: "Error signing in",
-        message: "Please try again later",
-        type: "error",
-      });
-    }
-  };
 
   const signInWithDiscord = async () => {
     setIsLoading(true);
     try {
-      await signIn("discord");
+      await signIn("discord", { callbackUrl: "http://localhost:3000/dashboard" });
     } catch (error) {
       toast({
         title: "Error signing in",
@@ -47,8 +29,16 @@ const SignInButton: FC<SignInButtonProps> = ({}) => {
     }
   };
 
+
+
   return (
-    <Button onClick={signInWithDiscord} isLoading={isLoading}>
+    <Button
+      onClick={signInWithDiscord}
+      isLoading={isLoading}
+      variant={variant}
+      size={size}
+      className={className}
+    >
       Sign In
     </Button>
   );

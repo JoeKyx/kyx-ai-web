@@ -17,6 +17,7 @@ export const buttonVariants = cva(
         link: "bg-transparent dark:bg-transparent underline-offset-4 hover:underline text-slate-900 dark:text-slate-100 hover:bg-transparent dark:hover:bg-transparent",
         premium:
           "bg-slate-900 hover:bg-slate-800 text-white hover:bg-slate-800 dark:text-black dark:bg-light-gold dark:hover:bg-light-gold-2",
+        text: "bg-transparent hover:bg-slate-100 dark:hover:bg-slate-800 dark:text-slate-400 data-[state=open]:bg-transparent dark:data-[state=open]:bg-transparent underline-offset-4 hover:underline",
       },
       size: {
         default: "h-10 py-2 px-4",

@@ -10,7 +10,7 @@ interface LoginModalProps {
 
 const LoginModal: FC<LoginModalProps> = ({ isOpen, onClose }) => {
   const handleLogin = () => {
-    signIn("discord");
+    signIn("discord", { callbackUrl: "/dashboard" });
   };
 
   return (

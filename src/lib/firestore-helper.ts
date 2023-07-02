@@ -1,5 +1,7 @@
 import app from "./firebase-connection";
-import { getFirestore, collection, doc, getDoc } from "firebase/firestore";
+import { httpsCallable } from "firebase/functions";
+import { getFirestore, collection, doc, getDoc, setDoc } from "firebase/firestore";
+import { getFunctions } from "firebase/functions";
 
 export async function getUserTokens(userId: string) {
   try {
@@ -11,7 +13,13 @@ export async function getUserTokens(userId: string) {
       const userTokens = userDocSnap.data()?.tokens;
       return userTokens;
     }
-    return null;
+    // else create new user
+    else {
+     const functions = getFunctions(app);
+     const createUser = httpsCallable(functions, "createUserDocument");
+     const result = await createUser({ userId: userId, wayOfCreation: "web/tokens" });
+     return 1000;
+    }   
   } catch (error: any) {
     console.log("ERROR: ", error);
     return null;
