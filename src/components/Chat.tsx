@@ -15,7 +15,7 @@ const Chat: FC = () => {
     <Accordion
       type="single"
       collapsible
-      className="relative bg-white z-40 shadow"
+      className="relative bg-white z-40 shadow hidden sm:block"
     >
       <AccordionItem value="item-1">
         <div className="fixed right-8 w-80 bottom-8 bg-white dark:bg-slate-800 border border-gray-200 dark:border-slate-800 rounded-md overflow-hidden">

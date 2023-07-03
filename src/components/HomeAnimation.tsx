@@ -57,8 +57,8 @@ const HomeAnimation: FC<HomeAnimationProps> = ({ }) => {
 
 
   const imageResponse = () => (<div>
-    <div className="text-lg text-gray-600 dark:text-gray-200">Here are your generated images:</div>
-    <div className='flex flex-col sm:flex-row gap-4'>
+    <div className="text-lg flex flex-wrap text-gray-600 dark:text-gray-200">Here are your generated images:</div>
+    <div className='flex flex-col md:flex-row flex-wrap gap-4'>
       <Image src={variants[randomIndex].responseImages[0]} width={imageWidth} height={imageHeight} alt="Generated Images" />
       <Image src={variants[randomIndex].responseImages[1]} width={imageWidth} height={imageHeight} alt="Generated Images" />
       <Image src={variants[randomIndex].responseImages[2]} width={imageWidth} height={imageHeight} alt="Generated Images" />
@@ -68,12 +68,14 @@ const HomeAnimation: FC<HomeAnimationProps> = ({ }) => {
 
 
 
-  const AvatarElement: FC<{ src: string, alt: string }> = ({ src, alt }) => {
+  const AvatarElement: FC<{ src: string, alt: string, mobile: boolean }> = ({ src, alt, mobile }) => {
     return (
-      <div className='relative inline-block items-center h-12 w-12 sm:h-16 sm:w-16 rounded-full overflow-hidden me-8 border-2 dark:border-light-gold border-black hover:animate-bounce'>
-        <Image quality={100}
-          fill
-          style={{ objectFit: "cover" }} alt={alt} src={src} />
+      <div className={mobile ? 'block sm:hidden' : 'hidden sm:block'}>
+        <div className='relative inline-block items-center h-12 w-12 sm:h-16 sm:w-16 rounded-full overflow-hidden sm:me-8 border-2 dark:border-light-gold border-black'>
+          <Image quality={100}
+            fill
+            style={{ objectFit: "cover" }} alt={alt} src={src} />
+        </div>
       </div>
     )
   }
@@ -110,12 +112,16 @@ const HomeAnimation: FC<HomeAnimationProps> = ({ }) => {
     <div>
       <div className="flex  space-y-4 sm:space-x-4 sm:space-y-0">
 
-        <AvatarElement src={'/avatar/' + variants[randomIndex].avatar} alt='Avatar' />
+        <AvatarElement src={'/avatar/' + variants[randomIndex].avatar} alt='Avatar' mobile={false} />
 
         <div>
-          <div className="text-lg font-medium text-black dark:text-white">
-            {variants[randomIndex].username}:
+          <div className="text-lg font-medium text-black dark:text-white flex items-center space-x-2 sm:space-x-0">
+            <AvatarElement src={'/avatar/' + variants[randomIndex].avatar} alt='Avatar' mobile={true} />
+            <div className='text-left'>
+              {variants[randomIndex].username}:
+            </div>
           </div>
+
           <div className="text-lg text-gray-600 dark:text-gray-200">
             <TypeWriter onInit={(typewriter) => {
               typewriter.typeString(variants[randomIndex].prompt)
@@ -146,11 +152,14 @@ const HomeAnimation: FC<HomeAnimationProps> = ({ }) => {
       {showAIResponse && (
         <div className="flex space-y-4 sm:space-x-4 sm:space-y-0 mt-3">
 
-          <AvatarElement src='/kyxAi.jpeg' alt='Avatar' />
+          <AvatarElement src='/kyxAi.jpeg' alt='Avatar' mobile={false} />
 
           <div>
-            <div className="text-lg font-medium text-black dark:text-white">
-              Kyx AI:
+            <div className="text-lg font-medium text-black dark:text-white flex items-center space-x-2 sm:space-x-0">
+              <AvatarElement src='/kyxAi.jpeg' alt='Avatar' mobile={true} />
+              <div className='text-left'>
+                Kyx AI:
+              </div>
             </div>
             {message}
           </div>
@@ -159,10 +168,13 @@ const HomeAnimation: FC<HomeAnimationProps> = ({ }) => {
       )}
       {partOneFinished && (
         <div className="flex  space-y-4 sm:space-x-4 sm:space-y-0 mt-3">
-          <AvatarElement src={'/avatar/' + variants[randomIndex].avatar} alt='Avatar' />
+          <AvatarElement src={'/avatar/' + variants[randomIndex].avatar} alt='Avatar' mobile={false} />
           <div>
-            <div className="text-lg font-medium text-black dark:text-white">
-              {variants[randomIndex].username}:
+            <div className="text-lg font-medium text-black dark:text-white flex items-center space-x-2 sm:space-x-0">
+              <AvatarElement src={'/avatar/' + variants[randomIndex].avatar} alt='Avatar' mobile={true} />
+              <div className='text-left'>
+                {variants[randomIndex].username}:
+              </div>
             </div>
             <div className="text-lg text-gray-600 dark:text-gray-200">
               <TypeWriter
