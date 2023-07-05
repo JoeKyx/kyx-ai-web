@@ -47,8 +47,8 @@ const HomeAnimation: FC<HomeAnimationProps> = ({ }) => {
   // Choose a random number between 0 and length of variants
   const [randomIndex, setRandomIndex] = useState(Math.floor(Math.random() * variants.length));
 
-  const imageWidth = 200;
-  const imageHeight = 200;
+  const imageWidth = 150;
+  const imageHeight = 150;
 
   const [partOneFinished, setPartOneFinished] = useState(false);
   const [partTwoFinished, setPartTwoFinished] = useState(false);

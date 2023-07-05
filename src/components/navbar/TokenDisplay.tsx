@@ -6,6 +6,8 @@ import { Gem } from "lucide-react";
 import { cn } from "@/lib/utils";
 import Button, { buttonVariants } from "@/ui/Button";
 import Link from "next/link";
+import { Loader2 } from "lucide-react";
+
 
 
 interface TokenDisplayProps extends HTMLAttributes<HTMLDivElement> { }
@@ -29,8 +31,8 @@ const TokenDisplay = forwardRef<HTMLDivElement, TokenDisplayProps>(
       <div ref={ref} className={className} {...props}>
         <Link href={'/tokens'} className={buttonVariants({ variant: "ghost" })}>
           <Icons.Gem className="h-4 w-4 pr-1" />
-          {status === "loading" ? "Loading..." : session?.user?.tokens}
-          <span className="invisible sm:visible pl-1 w-0 sm:w-max">Tokens</span>
+          {status === "loading" ? <Loader2 className="w-4 h-4 animate-spin" /> : <span>{session?.user?.tokens}<span className="invisible sm:visible pl-1 w-0 sm:w-max">Tokens</span></span>}
+
         </Link>
       </div>
     );

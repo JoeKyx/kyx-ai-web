@@ -30,7 +30,7 @@ export default function Home() {
                 Kyx AI
               </LargeHeading>
               <LargeHeading
-                size="lg"
+                size="sm"
                 className="three-d text-black dark:text-light-gold"
               >
                 Your all in one Discord AI assistant
