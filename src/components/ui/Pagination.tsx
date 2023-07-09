@@ -24,13 +24,22 @@ const Pagination = forwardRef<HTMLDivElement, PaginationProps>(
     },
     ref
   ) => {
-    const pages = Array.from(Array(totalPages).keys());
+    const startPage = Math.max(1, currentPage - 2);
+    const endPage = Math.min(totalPages, currentPage + 2);
+    const pages = Array.from({ length: endPage - startPage + 1 }, (_, i) => startPage + i);
 
     return (
       <div
         className={cn(className, "flex items-center gap-4 justify-center")}
         {...props}
       >
+        <Button
+          className="flex items-center gap-2 rounded-full"
+          onClick={() => handlePageClick(1)}
+          disabled={currentPage === 1}
+        >
+          First
+        </Button>
         <Button
           className="flex items-center gap-2 rounded-full"
           onClick={prev}
@@ -42,10 +51,10 @@ const Pagination = forwardRef<HTMLDivElement, PaginationProps>(
           {pages.map((page) => (
             <Button
               key={page}
-              onClick={() => handlePageClick(page + 1)}
-              disabled={currentPage === page + 1}
+              onClick={() => handlePageClick(page)}
+              disabled={currentPage === page}
             >
-              {page + 1}
+              {page}
             </Button>
           ))}
         </div>
@@ -57,6 +66,13 @@ const Pagination = forwardRef<HTMLDivElement, PaginationProps>(
         >
           Next
           <ArrowRightIcon strokeWidth={2} className="h-4 w-4" />
+        </Button>
+        <Button
+          className="flex items-center gap-2 rounded-full"
+          onClick={() => handlePageClick(totalPages)}
+          disabled={currentPage === totalPages}
+        >
+          Last
         </Button>
       </div>
     );

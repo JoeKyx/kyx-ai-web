@@ -4,10 +4,10 @@ import { FC, useState } from "react";
 import SignInButton from "@/components/SignInButton";
 import { buttonVariants } from "@/components/ui/Button";
 import SignOutButton from "@/components/SignOutButton";
-import ThemeToggle from "./ThemeToggle";
-import LoginModal from "./LoginModal";
+import ThemeToggle from "../ThemeToggle";
+import LoginModal from "../LoginModal";
 import { Session } from "next-auth";
-import TokenDisplay from "./navbar/TokenDisplay";
+import TokenDisplay from "./TokenDisplay";
 import Image from "next/image";
 
 interface NavbarProps { }

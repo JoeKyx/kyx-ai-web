@@ -23,7 +23,9 @@ const SignOutButton: FC<SignOutButtonProps> = ({ }) => {
   const signUserOut = async () => {
     setIsLoading(true);
     try {
-      await signOut();
+      const baseUrl = window.location.origin;
+
+      await signOut({ callbackUrl: baseUrl });
     } catch (error) {
       toast({
         title: "Error signing out",

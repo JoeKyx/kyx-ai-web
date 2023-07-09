@@ -151,38 +151,42 @@ const ImageGenerations: FC<ImageGenerationsProps> = () => {
                 next={next}
                 handlePageClick={handlePageClick}
               />
-            ) : null}
-            {filteredImages.map(([messageId, imageList]) => (
-              <div key={messageId} className="flex justify-center">
-                <div className="flex flex-col items-start gap-2">
-                  <LargeHeading size="xs">{imageList[0].prompt}</LargeHeading>
-                  <div className="flex flex-wrap gap-2 justify-center sm:justify-start">
-                    {imageList.map((image) => (
-                      <div
-                        className="flex flex-col gap-2 sm:py-2 py-0"
-                        key={image.url}
-                      >
-                        <Image
-                          src={image.url}
-                          width={256}
-                          height={256}
-                          alt="an AI generated image"
-                          className="hover:opacity-80 transition-opacity duration-200 hover:cursor-pointer rounded-md shadow-sm sm:w-64 w-48"
-                          onClick={() => {
-                            window.open(image.url, "_blank");
-                          }}
-                        />
-                        {image.upscaledUrl && (
-                          <Button onClick={() => window.open(image.upscaledUrl)}>
-                            Upscaled Version
-                          </Button>
-                        )}
+            ) : null}<div className="flex justify-center">
+              <div className="flex flex-col items-center gap-2 max-w-screen-xl">
+                {filteredImages.map(([messageId, imageList]) => (
+                  <div key={messageId} >
+                    <LargeHeading size="xs">{imageList[0].prompt}</LargeHeading>
+                    <div className="flex justify-center">
+                      <div className="flex flex-wrap gap-2 justify-start sm:justify-start">
+                        {imageList.map((image) => (
+                          <div
+                            className="flex flex-col gap-2 sm:py-2 py-0"
+                            key={image.url}
+                          >
+                            <Image
+                              src={image.url}
+                              width={256}
+                              height={256}
+                              alt="an AI generated image"
+                              className="hover:opacity-80 transition-opacity duration-200 hover:cursor-pointer rounded-md shadow-sm sm:w-64 w-48"
+                              onClick={() => {
+                                window.open(image.url, "_blank");
+                              }}
+                            />
+                            {image.upscaledUrl && (
+                              <Button onClick={() => window.open(image.upscaledUrl)}>
+                                Upscaled Version
+                              </Button>
+                            )}
+                          </div>
+                        ))}
                       </div>
-                    ))}
+                    </div>
                   </div>
-                </div>
+                ))}
               </div>
-            ))}
+            </div>
+
             {totalPages > 1 ? (
               <Pagination
                 currentPage={currentPage}
