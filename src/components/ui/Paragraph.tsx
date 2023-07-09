@@ -6,7 +6,7 @@ interface ParagraphProps
   VariantProps<typeof paragraphVariants> { }
 
 const paragraphVariants = cva(
-  "max-w-prose mb-2 text-center",
+  "mb-2",
   {
     variants: {
       size: {

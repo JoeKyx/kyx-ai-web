@@ -30,3 +30,29 @@
 .three-d {
   text-shadow: none
 }
+
+/* Hide the default disclosure triangle */
+details > summary {
+  list-style: none;
+}
+
+/* Remove the default focus outline from Firefox */
+details > summary::-moz-focus-inner {
+  border: 0;
+}
+
+/* Add a custom disclosure triangle */
+details > summary::before {
+  content: '▶';
+  display: inline-block;
+  margin-right: 6px;
+  transform: rotate(90deg);
+  transition: transform 0.3s ease-in-out;
+}
+
+
+
+/* Rotate the custom disclosure triangle when the details are open */
+details[open] > summary::before {
+  transform: rotate(0deg);
+}
