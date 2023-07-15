@@ -47,7 +47,7 @@ export default function Home() {
         <div className="flex flex-col md:flex-row justify-center space-y-6 md:space-y-0 md:space-x-6 px-4 lg:px-0 w-full max-w-6xl">
           <div className="md:w-1/2 relative ">
             <div className="relative h-0 overflow-hidden max-w-full justify-center items-center" style={{ paddingBottom: "56.25%" }}>
-              <iframe className="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+              <iframe className="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/Khl-cflasyY" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
 
             </div>
             <div className="mt-8 text-center">
