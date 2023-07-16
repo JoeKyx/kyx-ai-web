@@ -43,6 +43,9 @@
       "@/ui/*": [
         "./src/components/ui/*"
       ],
+      "@/statics/*": [
+        "./src/statics/*"
+      ],
     }
   },
   "include": [

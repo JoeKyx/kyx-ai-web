@@ -9,6 +9,7 @@ import Button, { buttonVariants } from "@/components/ui/Button";
 import ScrollButton from "@/components/ui/ScrollButton";
 import SignInButton from "@/components/SignInButton";
 import HomeAnimation from "@/components/HomeAnimation";
+import Footer from "@/components/Footer";
 export const metadata: Metadata = {
   title: "Kyx AI | Home",
   description: "Your personal Discord AI assistant",
@@ -18,7 +19,7 @@ export const metadata: Metadata = {
 export default function Home() {
 
   return (
-    <div className="snap-y snap-always h-screen overflow-auto">
+    <>    <div className="snap-y snap-always h-screen overflow-auto">
       <div className="snap-center relative min-h-screen flex items-start justify-center overflow-x-hidden" id="section-1">
         <div className="container max-w-7xl mx-auto w-full">
           <div className="h-full gap-6 flex flex-col justify-start lg:justify-center items-start lg:items-start mt-24">
@@ -82,6 +83,15 @@ export default function Home() {
           {" "}to find out!
         </Paragraph>
       </div> */}
-    </div >
+      <div className="snap-start snap-mandatory relative min-h-screen flex flex-col justify-between md-pt-24 pt-24" id="section-3">
+        <div className="flex items-start justify-center">
+          <LargeHeading size="lg" className="text-center three-d text-black dark:text-light-gold">Get started with Kyx AI today!</LargeHeading>
+        </div>
+        <Footer />
+      </div>
+    </div>
+
+    </>
+
   );
 }

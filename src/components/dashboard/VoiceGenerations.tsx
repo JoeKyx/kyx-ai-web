@@ -9,6 +9,7 @@ import Pagination from "@/ui//Pagination";
 import Button from "@/ui/Button";
 import { VoiceGeneration } from "@/types/VoiceGeneration";
 import VoiceGenerationMessage from "@/components/VoiceGenerationMessage";
+import { LoginRedirectProps } from "@/types/LoginRedirectProps";
 
 interface VoiceGenerationsProps { }
 
@@ -36,10 +37,13 @@ const VoiceGenerations: FC<VoiceGenerationsProps> = () => {
   const router = useRouter();
   const { data: session, status } = useSession();
 
+
+
   useEffect(() => {
     if (status === "loading") return;
 
-    if (!session) router.push("/login");
+    if (!session) router.push("/login"
+    );
 
     const fetchData = async () => {
       if (session) {

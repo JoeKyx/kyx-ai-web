@@ -35,8 +35,8 @@ export default function TokenSalesCard(
 
 
   return (
-    <div className="w-full flex justify-center">
-      <Card className="w-full max-w-[20rem] p-8 bg-slate-700">
+    <div className="w-full h-full flex justify-center">
+      <Card className="flex flex-col h-full w-full max-w-[20rem] p-8 bg-slate-700">
         <CardHeader
           floated={false}
           shadow={false}
@@ -59,7 +59,7 @@ export default function TokenSalesCard(
             <span className="self-end text-4xl">€</span>
           </Typography>
         </CardHeader>
-        <CardBody className="p-0">
+        <CardBody className="p-0 flex-grow">
           <div className="pb-2 text-white">Enough for:</div>
           <ul className="flex flex-col gap-4">
             {features.map((feature, i) => (

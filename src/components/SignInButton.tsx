@@ -32,6 +32,9 @@ const SignInButton: FC<SignInButtonProps> = ({ className, variant, size }) => {
       // Get the current base URL so the callbackURL works anywhere
 
       const baseUrl = window.location.origin;
+      // If goBack go back to the previous page (prev page) 
+
+
       await signIn("discord", { callbackUrl: `${baseUrl}/dashboard` });
     } catch (error) {
       toast({

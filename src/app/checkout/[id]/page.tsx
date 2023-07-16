@@ -79,15 +79,17 @@ const Page: FC<pageProps> = ({ params }: { params: { id: string } }) => {
 
 
   return (
-    <div className="h-screen flex flex-col items-center">
+    <div className="h-screen flex flex-col items-center justify-center">
       {!purchaseFound ? (
-        <><LargeHeading size={"lg"}>Processing your purchase...</LargeHeading>
-          <PageLoader /></>) : (
+        <><LargeHeading size={"sm"}>Processing your purchase...</LargeHeading>
+          <PageLoader />
+        </>
+      ) : (
         <>
-          <LargeHeading size={"lg"}>Thank You For Your Purchase</LargeHeading>
-          <LargeHeading size={"sm"}>Your tokens have been successfully added to your account</LargeHeading>
+          <LargeHeading size={"sm"}>Thank You For Your Purchase</LargeHeading>
+          <LargeHeading size={"xxs"}>Your tokens have been successfully added to your account</LargeHeading>
 
-          <Paragraph size={"lg"} className='font-bold pt-10'>You have <TokenCounter oldTokens={oldTokens} newTokens={newTokens} /> Tokens!</Paragraph>
+          <LargeHeading size={"lg"} className='font-bold pt-10'>You have <TokenCounter oldTokens={oldTokens} newTokens={newTokens} /> Tokens!</LargeHeading>
         </>
       )}
     </div>

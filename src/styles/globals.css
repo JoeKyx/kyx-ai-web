@@ -56,3 +56,11 @@ details > summary::before {
 details[open] > summary::before {
   transform: rotate(0deg);
 }
+
+:root {
+  --color-fill: black; /* default color for light theme */
+}
+
+.dark {
+  --color-fill: #F5bc51; /* color for dark theme */
+}

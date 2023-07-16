@@ -3,7 +3,7 @@ import Paragraph from '@/components/ui/Paragraph'
 import { FC } from 'react'
 import Icons from "@/components/Icons";
 import TokenSalesCard from '@/components/TokenSalesCard';
-import TokenOffers, { TokenOffer } from '../statics/TokenOffers';
+import TokenOffers, { TokenOffer } from '@/statics/TokenOffers';
 import { map } from 'lodash';
 import { checkout } from '@/lib/stripe-api';
 import { Metadata } from 'next';
@@ -37,13 +37,15 @@ const page: FC<pageProps> = ({ }) => {
       </div>
 
       {/* Right Section */}
-      <div className="lg:w-4/6 w-full flex flex-col items-center lg:grid lg:grid-cols-3 lg:items-stretch gap-4">
+      <div className="lg:w-4/6 w-full grid grid-cols-3 gap-4">
         {tokenOffers.map((offer: TokenOffer, i) => (
-          <div className="w-full lg:w-auto" key={offer.title}>
+          <div key={offer.title}>
             <TokenSalesCard key={i} title={offer.title} price={offer.price} features={offer.features} priceId={offer.appId} />
           </div>
         ))}
       </div>
+
+
     </div>)
 }
 

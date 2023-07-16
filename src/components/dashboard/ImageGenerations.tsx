@@ -29,7 +29,11 @@ const ImageGenerations: FC<ImageGenerationsProps> = () => {
     }
 
     if (!session) {
-      router.push("/login"); // If not authenticated, force log in
+      console.log("No Session")
+      router.push("/login", {
+        destination: "/dashboard/images",
+        destinationName: "your image generations",
+      }); // If not authenticated, force log in
     }
 
     const fetchData = async () => {
