@@ -10,7 +10,6 @@ import ScrollButton from "@/components/ui/ScrollButton";
 import SignInButton from "@/components/SignInButton";
 import HomeAnimation from "@/components/main/HomeAnimation";
 import Footer from "@/components/main/Footer";
-import ImageArea from "@/components/main/ScreenshotArea";
 export const metadata: Metadata = {
   title: "Kyx AI | Home",
   description: "Your personal Discord AI assistant",
