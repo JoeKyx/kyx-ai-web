@@ -1,4 +1,4 @@
-import Chat from "@/components/Chat";
+import Chat from "@/components/main/chat/Chat";
 import "@/styles/globals.css";
 import { Inter } from "next/font/google";
 import Providers from "@/components/Providers";

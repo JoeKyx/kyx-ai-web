@@ -3,13 +3,14 @@ import LargeHeading from "@/components/ui/LargeHeading";
 import Paragraph from "@/components/ui/Paragraph";
 import Link from "next/link";
 import Image from "next/image";
-import Chat from "@/components/Chat";
+import Chat from "@/components/main/chat/Chat";
 import { ScrollDownButton } from "@/components/ui/ScrollDownButton";
 import Button, { buttonVariants } from "@/components/ui/Button";
 import ScrollButton from "@/components/ui/ScrollButton";
 import SignInButton from "@/components/SignInButton";
-import HomeAnimation from "@/components/HomeAnimation";
-import Footer from "@/components/Footer";
+import HomeAnimation from "@/components/main/HomeAnimation";
+import Footer from "@/components/main/Footer";
+import ImageArea from "@/components/main/ScreenshotArea";
 export const metadata: Metadata = {
   title: "Kyx AI | Home",
   description: "Your personal Discord AI assistant",
@@ -17,6 +18,10 @@ export const metadata: Metadata = {
 
 
 export default function Home() {
+
+  const screenshots = [
+    "/screenshots/1.jpeg"
+  ]
 
   return (
     <>    <div className="snap-y snap-always h-screen overflow-auto">
@@ -64,7 +69,7 @@ export default function Home() {
               <li className="pl-2"><b>Generate stunning images</b> from text prompts! Kyx AI allows you to control the image creation process with easily adjustable settings.</li>
               <li className="pl-2">Bring life to your voice channel! Kyx AI can join your voice channel and mimic the <b>voice of a any person</b>. Plus, you can save and download the spoken audio.</li>
               <li className="pl-2">Get ready for an interactive experience! Engage with Kyx AI, get your questions answered, and enjoy the fluent conversation just <b>like chatting with a real human.</b></li>
-              <li className="pl-2"><b>Completely FREE!</b> As we are just launching, every user gets 1,000 tokens for free usage. Additional tokens can be purchased at affordable rates.</li>
+              <li className="pl-2"><b>Completely FREE!</b> As we are just launching, every user gets 250 tokens for free usage. Enough to generate about 250 images!</li>
               <li className="pl-2">Stay tuned for more! We are constantly innovating and bringing new features to enhance your Kyx AI experience.</li>
             </ul>
           </div>
@@ -84,7 +89,7 @@ export default function Home() {
         </Paragraph>
       </div> */}
       <div className="snap-start snap-mandatory relative min-h-screen flex flex-col justify-between md-pt-24 pt-24" id="section-3">
-        <div className="flex items-start justify-center">
+        <div className="flex items-center justify-center">
           <LargeHeading size="lg" className="text-center three-d text-black dark:text-light-gold">Get started with Kyx AI today!</LargeHeading>
         </div>
         <Footer />
