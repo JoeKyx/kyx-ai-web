@@ -73,6 +73,67 @@ const page: FC<pageProps> = ({ }) => {
             }
           ],
         },
+        {
+          name: "/remix_image",
+          description: "Remixes an input image into a new image",
+          usage: "/remix_image <image file> <text prompt>",
+          params: [
+            {
+              name: "image file",
+              description: "The image you want to remix",
+              type: "file",
+              required: true,
+            },
+            {
+              name: "prompt",
+              description: "The text prompt to generate a remix from",
+              type: "text",
+              required: true,
+            },
+            {
+              name: "width",
+              description: "The width the images should be generated at",
+              type: "number",
+              required: false,
+            },
+            {
+              name: "height",
+              description: "The height the images should be generated at",
+              type: "number",
+              required: false,
+            },
+            {
+              name: "num_images",
+              description: "The number of images to generate (max 5, default 4)",
+              type: "number",
+              required: false,
+            },
+            {
+              name: "guidance_scale",
+              description: "How close the image should be to your prompt. A higher value leads to less creative freedom of the bot (min 1, max 20, default 7)",
+              type: "number",
+              required: false,
+            },
+            {
+              name: "init_strength",
+              description: "The strength of how much the original image should influence the remix (min 0, max 1, default 0.5)",
+              type: "float",
+              required: false,
+            },
+            {
+              name: "negative_prompt",
+              description: "What the image should not contain. This can be used to avoid certain objects in the image (default empty)",
+              type: "text",
+              required: false,
+            },
+            {
+              name: "model",
+              description: "The model to use for generation. Each model has a different style.",
+              type: "text",
+              required: false,
+            }
+          ],
+        },
       ],
 
     },
