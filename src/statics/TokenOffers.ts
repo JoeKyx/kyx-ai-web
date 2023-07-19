@@ -8,7 +8,7 @@ const tokenOffers = [
       "2.000 Characters of Voice Generation",
       "Chat Messages are Free!",
     ],
-    appId: "price_1NMtH3JB0jYECGoH5jJWpE27",
+    appId: "price_1NVdStJB0jYECGoHAHrQo3EH",
   },
   {
     title: "1200 Tokens",
@@ -19,7 +19,7 @@ const tokenOffers = [
       "6000 Characters of Voice Generation",
       "Chat Messages are Free!",
     ],
-    appId: "price_1NMtJKJB0jYECGoHmpzvcCLt",
+    appId: "price_1NVdSpJB0jYECGoHzExAfToe",
   },
   {
     title: "3000 Tokens",
@@ -30,7 +30,7 @@ const tokenOffers = [
       "12.000 Characters of Voice Generation",
       "Chat Messages are Free!",
     ],
-    appId: "price_1NMtLBJB0jYECGoH7tyUz7ih",
+    appId: "price_1NVdSkJB0jYECGoHcE4dM2Mt",
   },
 ];
 

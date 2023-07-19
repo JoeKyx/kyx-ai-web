@@ -9,8 +9,8 @@ import {
 } from "@material-tailwind/react";
 import { CheckIcon } from "@heroicons/react/24/outline";
 import { checkout } from "@/lib/stripe-api";
-
 import { useSession } from "next-auth/react";
+import SignInButton from "./SignInButton";
 
 interface TokenSalesCardProps {
   title: string;
@@ -82,16 +82,12 @@ export default function TokenSalesCard(
             onClick={onClick}
           >
             Buy Now
-          </Button>) : (<Button
+          </Button>) : (<div className="flex justify-center"><SignInButton
             size="lg"
-            color="white"
             className="text-blue-500 hover:scale-[1.02] focus:scale-[1.02] active:scale-100"
-            ripple={false}
-            fullWidth={true}
-
-          >
-            Login to buy
-          </Button>)}
+            text="Sign in to buy"
+          />
+          </div>)}
 
         </CardFooter>
       </Card>

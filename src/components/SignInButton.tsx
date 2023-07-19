@@ -8,12 +8,15 @@ import LoginModal from "@/components/LoginModal";
 import { buttonVariants } from "@/components/ui/Button";
 import { size } from "lodash";
 import { VariantProps } from "class-variance-authority";
+import { sign } from "crypto";
 
 interface SignInButtonProps extends VariantProps<typeof buttonVariants> {
   className?: string;
+  text?: string;
+  callbackUrl?: string;
 }
 
-const SignInButton: FC<SignInButtonProps> = ({ className, variant, size }) => {
+const SignInButton: FC<SignInButtonProps> = ({ className, variant, size, text, callbackUrl }) => {
   const [isHydrated, setIsHydrated] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
@@ -34,8 +37,12 @@ const SignInButton: FC<SignInButtonProps> = ({ className, variant, size }) => {
       const baseUrl = window.location.origin;
       // If goBack go back to the previous page (prev page) 
 
-
-      await signIn("discord", { callbackUrl: `${baseUrl}/dashboard` });
+      if (callbackUrl) {
+        await signIn("discord", { callbackUrl: `${baseUrl}/${callbackUrl}` });
+      }
+      else {
+        await signIn("discord");
+      }
     } catch (error) {
       toast({
         title: "Error signing in",
@@ -55,7 +62,7 @@ const SignInButton: FC<SignInButtonProps> = ({ className, variant, size }) => {
       size={size}
       className={className}
     >
-      Sign In
+      {text ? text : "Sign in"}
     </Button>
   );
 };

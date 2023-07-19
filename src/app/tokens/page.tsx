@@ -1,11 +1,9 @@
 import TokenText from '@/components/TokenText'
-import Paragraph from '@/components/ui/Paragraph'
 import { FC } from 'react'
 import Icons from "@/components/Icons";
 import TokenSalesCard from '@/components/TokenSalesCard';
 import TokenOffers, { TokenOffer } from '@/statics/TokenOffers';
-import { map } from 'lodash';
-import { checkout } from '@/lib/stripe-api';
+
 import { Metadata } from 'next';
 
 interface pageProps { }
