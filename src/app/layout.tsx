@@ -6,6 +6,7 @@ import { cn } from "@/lib/utils";
 import Navbar from "@/components/navbar/Navbar";
 import { Toaster } from "@/components/ui/toast";
 import { Analytics } from '@vercel/analytics/react';
+import Head from "next/head";
 
 
 const inter = Inter({ subsets: ["latin"] });
