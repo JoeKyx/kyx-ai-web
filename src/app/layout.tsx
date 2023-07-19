@@ -5,6 +5,8 @@ import Providers from "@/components/Providers";
 import { cn } from "@/lib/utils";
 import Navbar from "@/components/navbar/Navbar";
 import { Toaster } from "@/components/ui/toast";
+import { Analytics } from '@vercel/analytics/react';
+
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -24,6 +26,8 @@ export default function RootLayout({
           <Toaster position="bottom-left" />
           <main>{children}</main>
         </Providers>
+        <Analytics />
+
 
       </body>
     </html>
